@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #message-container {
+      width: 60%;
+      max-width: 1200px;
+      height: 520px;
+      padding: 15px;
+      overflow-y: auto;
+      margin-bottom: 5px;
+      border-width: 5px;  
+      border-style: inset;
+      
+    }
+
+   .chat{
+      padding: 10px;
+      border-radius: 100px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: large;
+      outline: none;
+      width: fit-content;
+    }
+
+    #send-container {
+      position: fixed;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      bottom: 0;
+      background-color: white;
+      max-width: 1200px;
+      width: 60%;
+      display: flex;
+    }
+
+    #message-input {
+      flex-grow: 1;
+      border-radius: 100px;
+      box-shadow: 5px;
+      background-color: rgb(219, 218, 218);
+      padding-left: 15px;
+      padding-right: 15px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: large;
+      outline: none;
+    }
+
+    #send-button{
+      border-radius: 300px;
+      background-color:#4CAF50;
+      color: white;
+      border-color: #4CAF50;
+      margin-left: 10px;
+      padding: 10px 15px;
+      font-size: large;
+      outline: none;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #send-button:hover{
+      background-color: rgb(0, 163, 22);
+    }
+
+    #a{
+      height: 10px;
+    }
+    
+
+  </style>
+</head>
+<body>
+  <div id="message-container"></div>
+  <div id="a"></div>
+  <form id="send-container">
+    <input type="text" id="message-input">
+    <button type="submit" id="send-button">Send</button>
+  </form>
+</body>
+</html>

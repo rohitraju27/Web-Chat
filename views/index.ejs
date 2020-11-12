@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+      #create-room{
+        width: 250px;
+        flex-grow: 1;
+        border-radius: 100px;
+        box-shadow: 5px;
+        background-color: rgb(219, 218, 218);
+        padding-left: 15px;
+        padding-right: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: large;
+        outline: none;
+      }
+      #new-room{
+        border-radius: 300px;
+        background-color:#4CAF50;
+        color: white;
+        border-color: #4CAF50;
+        margin-left: 10px;
+        padding: 5px 15px;
+        font-size: large;
+        outline: none;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .create-new-room{
+          position: relative;
+          top: 20px;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+      }
+      #room-container{
+          margin: auto;
+          margin-bottom: 20px;
+      }
+      hr{
+          width: 70%;
+      }
+      h4{
+          font-family:Verdana, Geneva, Tahoma, sans-serif; 
+          text-align: center;
+          font-size: 1.5rem;
+      }
+      #room-card{
+          font-family:Verdana, Geneva, Tahoma, sans-serif;
+          width: 80px;
+          border-radius: 15px;
+          box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+          padding: 10px;
+          background-color: rgb(238, 232, 232);
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+      }
+      #Join{
+          text-decoration: none;
+      }
+      #room-container{
+          display: flex;
+          justify-content: space-around;
+      }
+      @media screen and (max-width: 700px){
+          #room-container{
+            grid-template-columns: repeat(3, 75px);
+            grid-gap: 10px;
+            font-size: 0.7em;
+          }
+      }
+  </style>
+</head>
+<body>
+    <h4>Rooms currently running</h4>
+    <div id="room-container">
+        <% Object.keys(rooms).forEach(room => { %>
+            <div id="room-card">
+                <div><%= room %></div>
+                <a href="/<%= room %>" id="Join">Join</a>
+            </div>
+        <% }) %>
+    </div>
+    <hr>
+    <h4>Create a new room?</h3>
+    <div class="create-new-room">
+        <form action="/room" method="POST">
+            <input name="room" type="text" required id="create-room" placeholder="Enter new room's name">
+            <button type="submit" id="new-room">Create</button>
+        </form>
+    </div>
+</body>
+</html>
